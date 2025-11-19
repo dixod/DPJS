@@ -1,0 +1,4 @@
+{"level":50,"time":1763440207737,"pid":20492,"hostname":"DESKTOP-TAP6B52","msg":"Invalid shape params: oval 2 2 2 2"}
+{"level":50,"time":1763440207738,"pid":20492,"hostname":"DESKTOP-TAP6B52","msg":"Unknown type: trash"}
+{"level":50,"time":1763440207738,"pid":20492,"hostname":"DESKTOP-TAP6B52","msg":"Invalid shape params: sphere 1 2 3 -5"}
+{"level":30,"time":1763440207738,"pid":20492,"hostname":"DESKTOP-TAP6B52","msg":"Shapes loaded:"}

@@ -1,0 +1,5 @@
+oval 1 2 5 10
+oval 2 2 2 2
+sphere 5 5 5 10
+trash abc test
+sphere 1 2 3 -5
