@@ -1,4 +1,10 @@
-{"level":50,"time":1763440207737,"pid":20492,"hostname":"DESKTOP-TAP6B52","msg":"Invalid shape params: oval 2 2 2 2"}
-{"level":50,"time":1763440207738,"pid":20492,"hostname":"DESKTOP-TAP6B52","msg":"Unknown type: trash"}
-{"level":50,"time":1763440207738,"pid":20492,"hostname":"DESKTOP-TAP6B52","msg":"Invalid shape params: sphere 1 2 3 -5"}
-{"level":30,"time":1763440207738,"pid":20492,"hostname":"DESKTOP-TAP6B52","msg":"Shapes loaded:"}
+{"level":40,"time":1764100051826,"pid":168324,"hostname":"debian","msg":"Invalid shape params: oval 0 0 0 0"}
+{"level":40,"time":1764100051827,"pid":168324,"hostname":"debian","msg":"Invalid shape params: sphere 1 2 3 -5"}
+{"level":40,"time":1764100051828,"pid":168324,"hostname":"debian","msg":"Invalid shape params: sphere 1 2"}
+{"level":40,"time":1764100051828,"pid":168324,"hostname":"debian","msg":"Invalid shape params: oval 2a 3 4 5"}
+{"level":30,"time":1764100051828,"pid":168324,"hostname":"debian","count":5,"msg":"Shapes loaded successfully"}
+{"level":30,"time":1764100051828,"pid":168324,"hostname":"debian","id":"shape-1","type":"oval","area":"18.85","perimeter":"16.02","isOval":true,"isCircle":false,"intersectsExactlyOneAxis":false,"msg":"Oval calculations"}
+{"level":30,"time":1764100051828,"pid":168324,"hostname":"debian","id":"shape-2","type":"oval","area":"50.27","perimeter":"25.13","isOval":true,"isCircle":true,"intersectsExactlyOneAxis":false,"msg":"Oval calculations"}
+{"level":30,"time":1764100051829,"pid":168324,"hostname":"debian","id":"shape-3","type":"sphere","surface":"314.16","volume":"523.60","isSphere":true,"touchesAnyPlane":false,"volumeRatioXY":"1.0000","volumeRatioXZ":"1.0000","volumeRatioYZ":"1.0000","msg":"Sphere calculations"}
+{"level":30,"time":1764100051829,"pid":168324,"hostname":"debian","id":"shape-4","type":"sphere","surface":"113.10","volume":"113.10","isSphere":true,"touchesAnyPlane":false,"volumeRatioXY":"0.0000","volumeRatioXZ":"0.3500","volumeRatioYZ":"0.0800","msg":"Sphere calculations"}
+{"level":30,"time":1764100051829,"pid":168324,"hostname":"debian","id":"shape-5","type":"oval","area":"1036.73","perimeter":"118.30","isOval":true,"isCircle":false,"intersectsExactlyOneAxis":false,"msg":"Oval calculations"}

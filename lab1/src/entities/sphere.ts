@@ -1,15 +1,13 @@
-import { Point } from "./point";
+import { Shape } from "./shape.js";
+import { Point } from "./point.js";
 
-export class Sphere {
-    public id: string;
+export class Sphere extends Shape {
     public center: Point;
-    public z: number;
     public radius: number;
 
-    constructor(id: string, center: Point, z: number, radius: number) {
-        this.id = id;
+    constructor(id: string, center: Point, radius: number) {
+        super(id, "sphere");
         this.center = center;
-        this.z = z;
         this.radius = radius;
     }
 }

@@ -30,9 +30,9 @@ export class ShapeFactory {
 
         const [x, y, z, r] = nums;
 
-        const center = new Point(x, y);
+        const center = new Point(x, y, z);
 
-        return new Sphere(id, center, z, r);
+        return new Sphere(id, center, r);
     }
 
 }

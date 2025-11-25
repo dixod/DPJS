@@ -1,13 +1,13 @@
-import {Point} from './point';
+import { Shape } from "./shape.js";
+import { Point } from "./point.js";
 
-export class Oval {
-    public id: string;
-    public p1: Point;
-    public p2: Point;
+export class Oval extends Shape {
+    public firstPoint: Point;
+    public secondPoint: Point;
 
-    constructor(id: string, p1: Point, p2: Point) {
-        this.id = id;
-        this.p1 = p1;
-        this.p2 = p2;
+    constructor(id: string, firstPoint: Point, secondPoint: Point) {
+        super(id, "oval");
+        this.firstPoint = firstPoint;
+        this.secondPoint = secondPoint;
     }
 }

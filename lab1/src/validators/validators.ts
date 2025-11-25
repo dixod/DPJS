@@ -1,6 +1,27 @@
+import { ValidationError } from "../errors/errors.js";
+
 export class Validators {
     public static parseNumber(line: string): number[] {
-        return line.split(' ').map(n => Number(n));
+        const trimmed = line.trim();
+        if (!trimmed) {
+            throw new ValidationError("Line does not contain numeric values");
+        }
+
+        const tokens = trimmed.split(" ").filter((token) => token.length > 0);
+        const numbers: number[] = [];
+
+        for (let i = 0; i < tokens.length; i += 1) {
+            const token = tokens[i];
+            const num = Number(token);
+
+            if (Number.isNaN(num)) {
+                throw new ValidationError(`Invalid numeric token: ${token}`);
+            }
+
+            numbers.push(num);
+        }
+
+        return numbers;
     }
 
     public static isValidOval(nums: number[]): boolean {
@@ -10,11 +31,11 @@ export class Validators {
 
         const [x1, y1, x2, y2] = nums;
 
-        if (x1 === x2 && y1 === y2) {
+        if (x1 === x2) {
             return false;
         }
 
-        if (x1 === x2 || y1 === y2) {
+        if (y1 === y2) {
             return false;
         }
 
@@ -26,7 +47,22 @@ export class Validators {
             return false;
         }
 
-        const r = nums[3];
-        return r > 0;
+        const radius = nums[3];
+
+        if (radius <= 0) {
+            return false;
+        }
+
+        return true;
+    }
+}
+
+export class ResultValidators {
+    public static isPositive(value: number): boolean {
+        return value > 0;
+    }
+
+    public static isRatioBetween0And1(value: number): boolean {
+        return value >= 0 && value <= 1;
     }
 }

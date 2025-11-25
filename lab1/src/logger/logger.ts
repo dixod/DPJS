@@ -1,8 +1,8 @@
+import { existsSync, mkdirSync } from "node:fs";
 import pino from "pino";
-import * as fs from "fs";
 
-if (!fs.existsSync("logs")) {
-    fs.mkdirSync("logs");
+if (!existsSync("logs")) {
+    mkdirSync("logs");
 }
 
 const logger = pino({
@@ -12,12 +12,17 @@ const logger = pino({
             {
                 target: "pino-pretty",
                 level: "info",
-                options: { colorize: true }
+                options: {
+                    colorize: true
+                }
             },
             {
                 target: "pino/file",
                 level: "info",
-                options: { destination: "logs/app.log" }
+                options: {
+                    destination: "logs/app.log",
+                    append: true
+                }
             }
         ]
     }

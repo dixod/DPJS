@@ -1,53 +1,51 @@
-import * as fs from "fs";
+import { readFileSync } from "node:fs";
 import logger from "../logger/logger.js";
 import { ShapeFactory } from "../factory/ShapeFactory.js";
-import { Oval } from "../entities/oval.js";
-import { Sphere } from "../entities/sphere.js";
+import { Shape } from "../entities/shape.js";
+import { FileReadError } from "../errors/errors.js";
 
 export class FileReader {
-
-    public static read(path: string): (Oval | Sphere)[] {
-        const shapes: (Oval | Sphere)[] = [];
-        let id = 1;
-
+    public static read(path: string): Shape[] {
         try {
-            const lines = fs.readFileSync(path, "utf-8").split("\n");
+            const content = readFileSync(path, "utf-8");
+            const lines = content.split("\n");
+            const shapes: Shape[] = [];
+            let shapeId = 1;
 
             for (const line of lines) {
-
-                const trimmed = line.trim();
-                if (trimmed === "") continue;
-
-                const spaceIndex = trimmed.indexOf(" ");
-                if (spaceIndex === -1) {
-                    logger.error(`Invalid line (no params): ${trimmed}`);
+                const trimmedLine = line.trim();
+                if (!trimmedLine) {
                     continue;
                 }
 
-                const type = trimmed.substring(0, spaceIndex);
-                const params = trimmed.substring(spaceIndex + 1);
+                const parts = trimmedLine.split(" ");
+                if (parts.length < 2) {
+                    logger.warn(`Line without type or params: ${trimmedLine}`);
+                    continue;
+                }
+
+                const type = parts[0].toLowerCase();
+                const params = parts.slice(1).join(" ");
 
                 try {
                     if (type === "oval") {
-                        shapes.push(ShapeFactory.createOval("id" + id, params));
-                    } 
-                    else if (type === "sphere") {
-                        shapes.push(ShapeFactory.createSphere("id" + id, params));
-                    } 
-                    else {
-                        logger.error(`Unknown type: ${type}`);
+                        shapes.push(ShapeFactory.createOval(`shape-${shapeId}`, params));
+                        shapeId += 1;
+                    } else if (type === "sphere") {
+                        shapes.push(ShapeFactory.createSphere(`shape-${shapeId}`, params));
+                        shapeId += 1;
+                    } else {
+                        logger.warn(`Unknown shape type: ${type}`);
                     }
                 } catch {
-                    logger.error(`Invalid shape params: ${trimmed}`);
+                    logger.warn(`Invalid shape params: ${trimmedLine}`);
                 }
-
-                id = id + 1;
             }
 
-        } catch (err) {
+            return shapes;
+        } catch (error) {
             logger.error(`Failed to read file: ${path}`);
+            throw new FileReadError(`Unable to read file: ${path}`);
         }
-
-        return shapes;
     }
 }
