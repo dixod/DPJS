@@ -1,0 +1,2 @@
+[PRINTER] Rectangle at (10,20) size 30x40
+[PRINTER] Circle center (1,4) r=10
