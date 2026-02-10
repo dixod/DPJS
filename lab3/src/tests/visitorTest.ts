@@ -13,10 +13,10 @@ describe("Visitor: area and perimeter", () => {
   const renderer = new DummyRenderer();
 
   test("rectangle area and perimeter via visitors", () => {
-    const rect = new Rectangle("r1", 0, 0, 10, 20, renderer);
+    const rectangle = new Rectangle("r1", 0, 0, 10, 20, renderer);
 
-    const area = rect.accept(new AreaVisitor());
-    const perimeter = rect.accept(new PerimeterVisitor());
+    const area = rectangle.accept(new AreaVisitor());
+    const perimeter = rectangle.accept(new PerimeterVisitor());
 
     expect(area).toBe(200);
     expect(perimeter).toBe(60);

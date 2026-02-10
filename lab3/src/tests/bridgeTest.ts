@@ -20,9 +20,9 @@ class SpyRenderer implements Renderer {
 describe("Bridge: shapes delegate drawing to renderer", () => {
   test("rectangle.draw delegates to renderer.drawRectangle", () => {
     const spy = new SpyRenderer();
-    const rect = new Rectangle("r1", 1, 2, 3, 4, spy);
+    const rectangle = new Rectangle("r1", 1, 2, 3, 4, spy);
 
-    rect.draw();
+    rectangle.draw();
 
     expect(spy.calls).toEqual(["rectangle"]);
     expect(spy.lastArgs).toEqual([1, 2, 3, 4]);
@@ -44,11 +44,11 @@ describe("Bridge: shapes delegate drawing to renderer", () => {
     const spy1 = new SpyRenderer();
     const spy2 = new SpyRenderer();
 
-    const rect = new Rectangle("r2", 7, 8, 9, 10, spy1);
+    const rectangle = new Rectangle("r2", 7, 8, 9, 10, spy1);
 
-    rect.draw();
-    rect.setRenderer(spy2);
-    rect.draw();
+    rectangle.draw();
+    rectangle.setRenderer(spy2);
+    rectangle.draw();
 
     expect(spy1.calls).toEqual(["rectangle"]);
     expect(spy2.calls).toEqual(["rectangle"]);
